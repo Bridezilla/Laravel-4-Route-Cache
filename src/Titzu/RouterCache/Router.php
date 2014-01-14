@@ -71,7 +71,8 @@ class Router extends \Illuminate\Routing\Router {
     {
         if ($cache_driver->has($key)) {
             $response = new Response();
-
+	    
+	    $response->header('Content-type', 'text/json');
             $response->header('Served-From', 'cache');
 
             return $response->setContent($cache_driver->get($key));
